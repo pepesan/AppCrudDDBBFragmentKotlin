@@ -3,14 +3,18 @@ package com.example.appcrudddbbfragmentkotlin
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
-class ClienteAdapter(private val clienteList: List<Cliente>, val context: Context) : RecyclerView.Adapter<ClienteAdapter.MyViewHolder>(){
+class ClienteAdapter(private val clienteList: List<Cliente>, val activity: AppCompatActivity) : RecyclerView.Adapter<ClienteAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) , View.OnClickListener{
         private var mItem: Cliente? = null
@@ -32,12 +36,11 @@ class ClienteAdapter(private val clienteList: List<Cliente>, val context: Contex
             this.position = position
         }
 
-        override fun onClick(view: View) {
+        override fun onClick(view: View){
             //navega a detalle
-            val intent = Intent(context ,MainActivity::class.java)
-            //intent.putExtra("title", mItem!!.title)
-            //intent.putExtra("position", position)
-            (context as Activity).startActivity(intent)
+            val bundle = Bundle()
+            bundle.putLong("id",mItem!!.id)
+            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.action_SecondFragment_to_detailFragment,bundle)
         }
 
     }
@@ -53,6 +56,11 @@ class ClienteAdapter(private val clienteList: List<Cliente>, val context: Contex
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val cliente = clienteList[position]
         holder.setItem(cliente, position)
+        /*
+        holder.itemView.setOnClickListener{
+            Navigation.createNavigateOnClickListener(R.id.action_SecondFragment_to_detailFragment)
+        }
+         */
     }
 
     override fun getItemCount(): Int {
