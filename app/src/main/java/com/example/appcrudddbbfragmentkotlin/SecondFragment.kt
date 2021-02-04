@@ -65,6 +65,11 @@ class SecondFragment : Fragment() {
         inflater.inflate(R.menu.sample_menu, menu)
     }
 
+    override fun onResume() {
+        super.onResume()
+        activity?.setTitle(R.string.second_fragment_label)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_list_add){
             findNavController().navigate(R.id.action_SecondFragment_to_addFragment)

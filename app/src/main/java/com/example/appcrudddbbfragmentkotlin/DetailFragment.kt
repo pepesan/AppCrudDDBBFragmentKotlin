@@ -51,11 +51,11 @@ class DetailFragment : Fragment() {
         item.isVisible = false
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.sample_menu, menu)
+        inflater.inflate(R.menu.detail_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_list_add){
+        if(item.itemId == R.id.action_detail_delete){
             findNavController().navigate(R.id.action_detailFragment_to_SecondFragment)
         }
         if(item.itemId ==android.R.id.home) {

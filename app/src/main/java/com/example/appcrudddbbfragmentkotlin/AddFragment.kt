@@ -49,7 +49,7 @@ class AddFragment : Fragment() {
         item.isVisible = false
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.sample_menu, menu)
+        inflater.inflate(R.menu.add_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
