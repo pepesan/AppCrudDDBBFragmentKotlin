@@ -40,7 +40,8 @@ class ClienteAdapter(private val clienteList: List<Cliente>, val activity: AppCo
             //navega a detalle
             val bundle = Bundle()
             bundle.putLong("id",mItem!!.id)
-            activity.findNavController(R.id.nav_host_fragment).navigate(R.id.action_SecondFragment_to_detailFragment,bundle)
+            activity.findNavController(R.id.nav_host_fragment)
+                    .navigate(R.id.action_SecondFragment_to_detailFragment,bundle)
         }
 
     }

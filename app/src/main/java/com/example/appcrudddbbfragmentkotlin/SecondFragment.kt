@@ -46,9 +46,8 @@ class SecondFragment : Fragment() {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
          */
-        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            findNavController().navigate(R.id.action_SecondFragment_to_addFragment)
         }
         cAdapter = ClienteAdapter(listado!!, miActivity!!)
         val mLayoutManager = LinearLayoutManager(activity)
@@ -68,7 +67,7 @@ class SecondFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_list_add){
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_SecondFragment_to_addFragment)
         }
         if(item.itemId ==android.R.id.home) {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)

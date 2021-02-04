@@ -13,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
+ * Use the [AddFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DetailFragment : Fragment() {
+class AddFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -31,20 +31,18 @@ class DetailFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Modificando la barra
-        activity?.setTitle(R.string.detail_fragment_label)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        activity?.setTitle(R.string.add_fragment_label)
         setHasOptionsMenu(true)
         miActivity= (activity as MainActivity)
         miActivity?.supportActionBar?.setDisplayHomeAsUpEnabled(true);
         // Accediendo a los datos
         miAplicacion = (miActivity?.application as Aplicacion)
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        return inflater.inflate(R.layout.fragment_add, container, false)
     }
+
     override fun onPrepareOptionsMenu(menu: Menu){
         super.onPrepareOptionsMenu(menu)
         val item = menu.findItem(R.id.action_settings)
@@ -56,15 +54,16 @@ class DetailFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_list_add){
-            findNavController().navigate(R.id.action_detailFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_addFragment_to_SecondFragment)
         }
         if(item.itemId ==android.R.id.home) {
-            findNavController().navigate(R.id.action_detailFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_addFragment_to_SecondFragment)
         }
         (activity as AppCompatActivity).getSupportActionBar()?.setDisplayHomeAsUpEnabled(false);
         return super.onOptionsItemSelected(item)
 
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -72,16 +71,16 @@ class DetailFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailFragment.
+         * @return A new instance of fragment AddFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            DetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                AddFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(ARG_PARAM1, param1)
+                        putString(ARG_PARAM2, param2)
+                    }
                 }
-            }
     }
 }
