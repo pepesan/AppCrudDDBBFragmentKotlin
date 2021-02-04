@@ -17,4 +17,6 @@
     <string name="detail_fragment_label">Detail</string>
     <string name="delete">Delete</string>
     <string name="add_form_name_label">Name:</string>
+    <string name="edit">Edit</string>
+    <string name="edit_fragment_label">Edit</string>
 </resources>

@@ -41,11 +41,6 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-         */
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_addFragment)
         }
@@ -68,6 +63,7 @@ class SecondFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.setTitle(R.string.second_fragment_label)
+        cAdapter?.notifyDataSetChanged()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
