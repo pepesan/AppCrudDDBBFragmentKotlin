@@ -91,6 +91,17 @@ class Modelo internal constructor(application: Aplicacion) {
             ClientSqliteHelper.CLIENT_ID,
             c.id)
         db.delete(ClientSqliteHelper.CLIENT_TABLE, where, null)
-        listado!!.remove(c)
+        Log.d("app", "posicion elemento entontrado: "+listado.indexOf(c))
+        // Falla el remove!!!   listado!!.remove(c)
+        val count = listado!!.size
+        for (i in 0 until count) {
+            val c2 = listado!![i]
+            if (c2.id == c.id) {
+                listado.removeAt(i)
+                break
+            }
+        }
+        // TODO: rápido
+        //loadList()
     }
 }
