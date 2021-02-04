@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Home</string>
-    <string name="second_fragment_label">RecycleViewt</string>
+    <string name="second_fragment_label">RecycleView</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -16,4 +16,5 @@
     <string name="add_fragment_label">Add</string>
     <string name="detail_fragment_label">Detail</string>
     <string name="delete">Delete</string>
+    <string name="add_form_name_label">Name:</string>
 </resources>

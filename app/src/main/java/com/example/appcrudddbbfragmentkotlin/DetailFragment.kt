@@ -1,9 +1,12 @@
 package com.example.appcrudddbbfragmentkotlin
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,7 +25,8 @@ class DetailFragment : Fragment() {
     private var param2: String? = null
     var miActivity: MainActivity? = null
     var miAplicacion: Aplicacion ? = null
-
+    private val model: SharedFragmentViewModel by activityViewModels()
+    var c : Cliente? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -43,7 +47,18 @@ class DetailFragment : Fragment() {
         // Accediendo a los datos
         miAplicacion = (miActivity?.application as Aplicacion)
         // Inflate the layout for this fragment
+        Log.d("app", "Detail id param value: "+savedInstanceState?.getString("id"))
         return inflater.inflate(R.layout.fragment_detail, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        model.selected?.observe(viewLifecycleOwner) {
+            view.findViewById<TextView>(R.id.detail_text_id_label).text= it.toString()
+            c = miAplicacion?.modelo?.get(it)
+            view.findViewById<TextView>(R.id.detail_text_name_label).text = c?.nombre
+
+        }
     }
     override fun onPrepareOptionsMenu(menu: Menu){
         super.onPrepareOptionsMenu(menu)
@@ -56,6 +71,8 @@ class DetailFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.action_detail_delete){
+            val id = model.selected?.value
+            miAplicacion?.modelo?.remove(c!!)
             findNavController().navigate(R.id.action_detailFragment_to_SecondFragment)
         }
         if(item.itemId ==android.R.id.home) {

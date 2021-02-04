@@ -8,13 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
-class ClienteAdapter(private val clienteList: List<Cliente>, val activity: AppCompatActivity) : RecyclerView.Adapter<ClienteAdapter.MyViewHolder>(){
+class ClienteAdapter(private val clienteList: List<Cliente>, val activity: MainActivity) : RecyclerView.Adapter<ClienteAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) , View.OnClickListener{
         private var mItem: Cliente? = null
@@ -38,10 +39,9 @@ class ClienteAdapter(private val clienteList: List<Cliente>, val activity: AppCo
 
         override fun onClick(view: View){
             //navega a detalle
-            val bundle = Bundle()
-            bundle.putLong("id",mItem!!.id)
+            activity.model.selected(mItem?.id!!)
             activity.findNavController(R.id.nav_host_fragment)
-                    .navigate(R.id.action_SecondFragment_to_detailFragment,bundle)
+                    .navigate(R.id.action_SecondFragment_to_detailFragment)
         }
 
     }
