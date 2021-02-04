@@ -2,8 +2,8 @@
     <string name="app_name">AppCrudDDBBFRagmentKotlin</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">Home Fragment</string>
-    <string name="second_fragment_label">RecycleView Fragment</string>
+    <string name="first_fragment_label">Home</string>
+    <string name="second_fragment_label">RecycleViewt</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
